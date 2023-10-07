@@ -1,4 +1,12 @@
-class Hall:
+class Star_Cinema:
+    __hall_list  = []
+    
+    def entry_hall(self, hall):
+        self.__hall_list.append(hall)
+
+
+
+class Hall(Star_Cinema):
     def __init__(self, seats, rows, cols, hall_no) -> None:
         self.__seats = {}
         self.__rows = rows
@@ -6,6 +14,10 @@ class Hall:
         self.__hall_no = hall_no
         self.__show_lists = {}
         self.__idList = []
+
+        def __init__(self):
+            super(Star_Cinema, self).__init__({ hall_no : {"seats" : self.__seats, "rows": self.__rows, "cols": self.__cols, "Show":self.__show_lists, "idList": self.__idList }})
+        
         
     def entry_show(self, id, movieName, time):
         self.__id = id
@@ -55,22 +67,15 @@ class Hall:
         print("**** All Seats: ****")
         for i in range(self.__rows+1):
             for j in range(self.__cols+1):
-                print(f"**** Seat: ({i}, {j}) ****")
+                print(f"Seat: ({i}, {j}) ")
         
         print("\n**** Updated Seats: ****")
         for i in self.__seats[ID]:
             print(i)
         print('\n')  
-        
-class Star_Cinema(Hall):
-    __hall_list  = []
-    
-    def entry_hall(self):
-        self.__hall_list.append(Hall)
-        
-    
+
             
-ab = Star_Cinema(200, 5, 5, 111)
+ab = Hall(200, 5, 5, 1)
 
 
 ab.entry_show(111, "Pagla Haoya", "08/10/2023 11:00 AM")
